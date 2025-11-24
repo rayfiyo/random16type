@@ -7,7 +7,7 @@ import (
 	"github.com/rayfiyo/random16type/internal/domain/typecode"
 )
 
-// Generator produces random type codes using math/rand.
+// Generator は math/rand を使ってタイプコードをランダム生成する。
 type Generator struct {
 	r *rand.Rand
 }

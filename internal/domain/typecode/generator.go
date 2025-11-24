@@ -1,9 +1,9 @@
 package typecode
 
-// Code represents a 4-letter type string (e.g. INTJ).
+// Code は4文字のタイプコード（例: INTJ）を表す。
 type Code string
 
-// Generator produces a Code.
+// Generator は Code を生成する。
 type Generator interface {
 	Generate() Code
 }
