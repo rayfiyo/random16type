@@ -1,0 +1,8 @@
+.git
+tmp
+*.log
+bin
+dist
+node_modules
+vendor
+*.out

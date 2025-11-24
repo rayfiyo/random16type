@@ -17,3 +17,13 @@ go run .
 ```
 
 アクセス: http://localhost:8080/
+
+## Docker / docker-compose
+
+ビルド&起動:
+
+```bash
+docker compose up --build
+```
+
+アクセス: http://localhost:8080/
