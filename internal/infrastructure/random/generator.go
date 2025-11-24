@@ -1,23 +1,16 @@
 package random
 
 import (
-	"math/rand"
-	"time"
+	"math/rand/v2"
 
 	"github.com/rayfiyo/random16type/internal/domain/typecode"
 )
 
-// Generator は math/rand を使ってタイプコードをランダム生成する。
-type Generator struct {
-	r *rand.Rand
-}
+// math/rand/v2 で typecode をランダム生成
+type Generator struct{}
 
-func NewGenerator(seed int64) *Generator {
-	return &Generator{r: rand.New(rand.NewSource(seed))}
-}
-
-func NewGeneratorFromTime() *Generator {
-	return NewGenerator(time.Now().UnixNano())
+func New() *Generator {
+	return &Generator{}
 }
 
 func (g *Generator) Generate() typecode.Code {
@@ -30,7 +23,7 @@ func (g *Generator) Generate() typecode.Code {
 
 	code := make([]rune, len(pairs))
 	for i, p := range pairs {
-		code[i] = p[g.r.Intn(len(p))]
+		code[i] = p[rand.IntN(len(p))]
 	}
 	return typecode.Code(string(code))
 }

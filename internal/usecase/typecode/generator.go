@@ -2,7 +2,7 @@ package typecode
 
 import "github.com/rayfiyo/random16type/internal/domain/typecode"
 
-// GeneratorUsecase はドメインのジェネレータをアプリケーション層から利用するためのラッパー。
+// ドメインのジェネレータをアプリケーション層から利用するためのラッパー
 type GeneratorUsecase struct {
 	generator typecode.Generator
 }

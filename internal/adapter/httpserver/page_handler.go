@@ -7,7 +7,7 @@ import (
 	"github.com/rayfiyo/random16type/internal/domain/typecode"
 )
 
-// Generator はユースケースの Generate を提供するインタフェース。
+// ユースケースの Generate を提供するインタフェース
 type Generator interface {
 	Generate() typecode.Code
 }

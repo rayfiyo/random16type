@@ -5,12 +5,12 @@ import (
 	"net/http"
 
 	"github.com/rayfiyo/random16type/internal/adapter/httpserver"
-	random "github.com/rayfiyo/random16type/internal/infrastructure/random"
+	"github.com/rayfiyo/random16type/internal/infrastructure/random"
 	"github.com/rayfiyo/random16type/internal/usecase/typecode"
 )
 
 func main() {
-	randomGenerator := random.NewGeneratorFromTime()
+	randomGenerator := random.New()
 	generatorUsecase := typecode.NewGeneratorUsecase(randomGenerator)
 	pageHandler := httpserver.NewPageHandler(generatorUsecase)
 
