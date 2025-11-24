@@ -5,13 +5,15 @@ import (
 	"net/http"
 
 	"github.com/rayfiyo/random16type/internal/adapter/httpserver"
+	"github.com/rayfiyo/random16type/internal/infrastructure/memory"
 	"github.com/rayfiyo/random16type/internal/infrastructure/random"
 	"github.com/rayfiyo/random16type/internal/usecase/typecode"
 )
 
 func main() {
 	randomGenerator := random.New()
-	generatorUsecase := typecode.NewGeneratorUsecase(randomGenerator)
+	cache := memory.NewCache()
+	generatorUsecase := typecode.NewGeneratorUsecase(randomGenerator, cache)
 	pageHandler := httpserver.NewPageHandler(generatorUsecase)
 
 	mux := http.NewServeMux()
