@@ -67,7 +67,40 @@ const pageTemplate = `<!DOCTYPE html>
 <body>
   <div class="card">
     <p>Today's personality</p>
-    <h1>%s</h1>
+    <h1 id="code">%s</h1>
   </div>
+  <script>
+    (() => {
+      const pairs = [
+        ["I", "E"],
+        ["N", "S"],
+        ["T", "F"],
+        ["J", "P"],
+      ];
+
+      // 端末ごとに日付単位で結果を固定
+      const today = new Date().toISOString().slice(0, 10);
+      const storageKey = "random16type:" + today;
+
+      const stored = localStorage.getItem(storageKey);
+      const codeEl = document.getElementById("code");
+
+      const choose = (pair) => {
+        const rand = new Uint32Array(1);
+        crypto.getRandomValues(rand);
+        return pair[rand[0] %% pair.length];
+      };
+
+      const createCode = () => pairs.map(choose).join("");
+
+      const code = stored ?? (() => {
+        const value = createCode();
+        localStorage.setItem(storageKey, value);
+        return value;
+      })();
+
+      codeEl.textContent = code;
+    })();
+  </script>
 </body>
 </html>`
